@@ -1,0 +1,5 @@
+pytest
+behave
+coverage
+pynose
+pinocchio
