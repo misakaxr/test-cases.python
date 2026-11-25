@@ -1,0 +1,13 @@
+{
+  "accounts": [
+    {"balance": 100},
+    {"balance": 500},
+    {"balance": 0}
+  ],
+  "deposit_cases": [
+    {"start": 100, "amount": 50, "expected": 150},
+    {"start": 0, "amount": 25, "expected": 25},
+    {"start": 500, "amount": 0.5, "expected": 500.5}
+  ],
+  "invalid_amounts": [0, -5, -100]
+}

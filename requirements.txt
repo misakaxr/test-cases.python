@@ -3,3 +3,5 @@ behave
 coverage
 pynose
 pinocchio
+factory_boy
+faker

@@ -43,3 +43,31 @@ def test_withdraw_zero_raises_error():
     acc = Account(50)
     with pytest.raises(ValueError):
         acc.withdraw(0)
+
+
+def test_transfer_moves_money(account, make_account):
+    dest = make_account(20)
+    account.transfer(dest, 30)
+    assert account.balance == 70
+    assert dest.balance == 50
+
+
+
+def test_apply_interest_increases_balance(account):
+    account.apply_interest(0.05)
+    assert account.balance == 105
+
+
+def test_apply_interest_negative_rate_raises_error(account):
+    with pytest.raises(ValueError):
+        account.apply_interest(-0.1)
+
+
+def test_transfer_to_non_account_raises_type_error(account):
+    with pytest.raises(TypeError):
+        account.transfer("not an account", 10)
+
+
+def test_transfer_insufficient_funds_raises_error(make_account):
+    with pytest.raises(InsufficientFundsError):
+        make_account(10).transfer(make_account(0), 50)

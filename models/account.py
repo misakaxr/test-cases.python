@@ -19,3 +19,14 @@ class Account:
         if amount > self.balance:
             raise InsufficientFundsError("Not enough funds")
         self.balance -= amount
+
+    def transfer(self, other, amount):
+        if not isinstance(other, Account):
+            raise TypeError("Destination must be an Account")
+        self.withdraw(amount)
+        other.deposit(amount)
+
+    def apply_interest(self, rate):
+        if rate < 0:
+            raise ValueError("Rate cannot be negative")
+        self.balance += self.balance * rate
